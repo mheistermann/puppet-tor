@@ -1,0 +1,26 @@
+# This file is managed by puppet. Please edit the manifest 
+# or template instead of editing in here.
+<% if tor_mode != "client" then -%>
+# Tor-Relay Configuration
+ORPort <%= tor_orport %>
+RelayBandwidthRate <%= tor_relaybandwidthrate %>
+RelayBandwidthBurst <%= tor_relaybandwidthburst %>
+ContactInfo <%= tor_contactinfo %>
+Nickname <%= tor_nickname %>
+SocksPort 0
+<% else -%>
+SocksPort <%= tor_socksport %>
+<% end -%>
+<% if tor_mode == "bridge" then -%>
+BridgeRelay 1
+<% else -%>
+<% end -%>
+<% if tor_mode != "exit" then -%>
+# I am no exit, so no exit allowed.
+ExitPolicy reject *:*
+<% else -%>
+<% tor_exitpolicy.each do |ep| -%>
+# ExitPolicy
+ExitPolicy <%= ep %>
+<% end -%>
+<% end -%>
