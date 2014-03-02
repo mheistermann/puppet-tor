@@ -94,7 +94,7 @@ class tor::disabled {
 	
 	file {
 		"etc_tor_remove":
-			path 	=> "/etc/tor",
+			path 	=> "/etc/torrc.d",
 			ensure 	=> absent,
 			recurse => true,
 			force 	=> true,
