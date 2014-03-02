@@ -64,6 +64,7 @@ class tor::config inherits tor::defaults {
 			refreshonly => true,
 	}
 	
+  /*
 	@@file { 'tor-myfamily':
 		path	=> "/etc/torrc.d/20-myfamily-$fqdn",
 		content	=> inline_template("# $fqdn\nMyFamily \$$tor_fingerprint\n"),
@@ -72,6 +73,7 @@ class tor::config inherits tor::defaults {
 	}
 	
 	File <<| tag == 'tor_myfamily' |>> 
+  */
 	
 	service { "tor":
 		ensure 		=> running,
