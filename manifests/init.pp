@@ -24,7 +24,7 @@ class tor::install {
 		refreshonly => true;
 	"add_tor_apt_key":
 		path		=> "/usr/bin:/usr/sbin:/sbin:/bin",
-		command		=> "gpg --keyserver keys.gnupg.net --recv 886DDD89 && gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -",
+		command		=> "gpg --keyserver keys.gnupg.net --recv 886DDD89 && gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | apt-key add -",
 		unless 		=> "apt-key list | grep 886DDD89",
 	}	
 }
